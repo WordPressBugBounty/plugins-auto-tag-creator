@@ -1,0 +1,97 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-23 18:25+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: admin/class-ec-auto-tag-creator-admin.php:76
+msgid "Tag Setting"
+msgstr ""
+
+#: admin/class-ec-auto-tag-creator-admin.php:141
+msgid "Settings has been saved successfully."
+msgstr ""
+
+#: admin/templates/settings.php:1
+msgid "Tag Creation Setting"
+msgstr ""
+
+#: admin/templates/settings.php:8
+msgid "Enable for Post"
+msgstr ""
+
+#: admin/templates/settings.php:12
+msgid "Create tag by post title"
+msgstr ""
+
+#: admin/templates/settings.php:19
+msgid "Create tag by post category"
+msgstr ""
+
+#: admin/templates/settings.php:24
+msgid "Enable for Product"
+msgstr ""
+
+#: admin/templates/settings.php:28
+msgid "Create tag by product title"
+msgstr ""
+
+#: admin/templates/settings.php:35
+msgid "Create tag by product category"
+msgstr ""
+
+#: admin/templates/settings.php:40
+msgid "Overwrite Previous Tag"
+msgstr ""
+
+#: admin/templates/settings.php:44
+msgid ""
+"If this is enable all your previous tags will be removed and new tags based "
+"on your selection will be created."
+msgstr ""
+
+#: admin/templates/settings.php:49
+msgid "Mimimum word length to create tag"
+msgstr ""
+
+#: admin/templates/settings.php:53
+msgid "Zero or blank will ignore this setting."
+msgstr ""
+
+#: admin/templates/settings.php:58
+msgid "Ignore words list"
+msgstr ""
+
+#: admin/templates/settings.php:62
+msgid "Please add comma separated value."
+msgstr ""
+
+#: admin/templates/settings.php:69
+msgid "Save Settings"
+msgstr ""
+
+#: admin/templates/settings.php:71
+msgid ""
+"If you want to have same  functionality for other post type as well, please"
+msgstr ""
+
+#: admin/templates/settings.php:71
+msgid "contact us"
+msgstr ""
+
+#: admin/templates/settings.php:71
+msgid "for any type of custom work."
+msgstr ""
