@@ -2,5 +2,65 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
- 
-.loader_image{margin-top:10px;display:none;}
+
+.ec-atc-wrap{max-width:1400px;}
+.ec-atc-layout{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:20px;align-items:start;}
+.ec-atc-sidebar{position:sticky;top:52px;}
+.ec-atc-wrap h1{margin-bottom:16px;}
+
+.ec-atc-card{background:#fff;border:1px solid #dcdcde;border-radius:8px;padding:8px 24px 20px;margin:0 0 20px;box-shadow:0 1px 2px rgba(0,0,0,.04);}
+.ec-atc-card .form-table{margin-top:0;}
+.ec-atc-card .form-table th{width:200px;padding-left:0;}
+.ec-atc-card .form-table textarea{width:100%;max-width:640px;}
+.ec-atc-card-title{display:flex;align-items:center;gap:8px;margin:16px 0 4px;font-size:16px;}
+.ec-atc-card-title .dashicons{color:#0a7bcb;}
+.ec-atc-card-desc{margin:0 0 12px;color:#646970;}
+
+.ec-atc-submit{display:flex;align-items:center;gap:12px;padding-top:16px;border-top:1px solid #f0f0f1;}
+.loader_image{display:none;}
+
+.ec-atc-bulk-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;border-top:1px solid #f0f0f1;}
+.ec-atc-bulk-label{flex:1;min-width:0;}
+.ec-atc-bulk-label strong{display:block;font-size:14px;}
+.ec-auto-tag-progress{height:6px;max-width:360px;margin:8px 0 4px;background:#f0f0f1;border-radius:3px;overflow:hidden;}
+.ec-auto-tag-progress span{display:block;width:0;height:100%;background:#0a7bcb;transition:width .3s ease;}
+.ec-auto-tag-bulk-status{color:#646970;font-size:13px;}
+
+.ec-atc-promo{display:flex;flex-direction:column;align-items:flex-start;gap:14px;padding:24px;border-radius:8px;background:linear-gradient(135deg,#0a7bcb,#0062a3);color:#fff;}
+.ec-atc-promo-icon.dashicons{flex:none;width:44px;height:44px;font-size:24px;line-height:44px;text-align:center;border-radius:50%;background:rgba(255,255,255,.15);}
+.ec-atc-promo-text h3{margin:0 0 6px;color:#fff;font-size:16px;line-height:1.4;}
+.ec-atc-promo-text p{margin:0;color:rgba(255,255,255,.9);line-height:1.6;}
+.ec-atc-wrap .button.ec-atc-promo-button{width:100%;text-align:center;background:#fff;border-color:#fff;color:#0062a3;font-weight:600;}
+.ec-atc-wrap .button.ec-atc-promo-button:hover,.ec-atc-wrap .button.ec-atc-promo-button:focus{background:#e3f1fb;border-color:#e3f1fb;color:#004d80;}
+
+@media (max-width:1100px){
+	.ec-atc-layout{grid-template-columns:1fr;}
+	.ec-atc-sidebar{position:static;}
+}
+@media (max-width:782px){
+	.ec-atc-card{padding:8px 16px 16px;}
+	.ec-atc-bulk-row{flex-direction:column;align-items:flex-start;}
+}
+
+.ec-atc-modal[hidden]{display:none;}
+.ec-atc-modal{position:fixed;inset:0;z-index:100000;display:flex;align-items:center;justify-content:center;padding:16px;}
+.ec-atc-modal-backdrop{position:absolute;inset:0;background:rgba(15,23,42,.55);animation:ec-atc-fade .15s ease-out;}
+.ec-atc-modal-dialog{position:relative;width:100%;max-width:440px;padding:28px 28px 24px;background:#fff;border-radius:12px;box-shadow:0 20px 50px rgba(0,0,0,.25);text-align:center;animation:ec-atc-pop .18s ease-out;}
+.ec-atc-modal-icon.dashicons{width:56px;height:56px;font-size:28px;line-height:56px;border-radius:50%;background:#e3f1fb;color:#0a7bcb;}
+.ec-atc-modal-dialog h2{margin:14px 0 8px;font-size:18px;}
+.ec-atc-modal-dialog p{margin:0;color:#50575e;line-height:1.6;}
+.ec-atc-modal-warning{display:flex;gap:8px;align-items:flex-start;margin-top:14px;padding:10px 12px;text-align:left;background:#fcf9e8;border-left:4px solid #dba617;border-radius:4px;color:#50575e;}
+.ec-atc-modal-warning .dashicons{flex:none;color:#dba617;}
+.ec-atc-modal-actions{display:flex;justify-content:center;gap:10px;margin-top:22px;}
+.ec-atc-modal-actions .button{min-width:120px;}
+.ec-atc-modal-x{position:absolute;top:10px;right:10px;padding:4px;border:0;background:none;color:#8c8f94;cursor:pointer;border-radius:4px;}
+.ec-atc-modal-x:hover,.ec-atc-modal-x:focus{color:#1d2327;background:#f0f0f1;}
+@keyframes ec-atc-fade{from{opacity:0;}}
+@keyframes ec-atc-pop{from{opacity:0;transform:translateY(8px) scale(.97);}}
+.ec-atc-modal-warning[hidden]{display:none;}
+body.ec-atc-modal-open{overflow:hidden;}
+.ec-atc-bulk-label.is-done .ec-auto-tag-progress span{background:#00a32a;}
+.ec-atc-bulk-label.is-done .ec-auto-tag-bulk-status{color:#008a20;font-weight:600;}
+.ec-atc-bulk-label.is-done .ec-auto-tag-bulk-status::before{content:"\f147";font-family:dashicons;font-size:18px;vertical-align:-4px;margin-right:2px;}
+.ec-atc-bulk-label.is-error .ec-auto-tag-progress span{background:#d63638;}
+.ec-atc-bulk-label.is-error .ec-auto-tag-bulk-status{color:#d63638;font-weight:600;}

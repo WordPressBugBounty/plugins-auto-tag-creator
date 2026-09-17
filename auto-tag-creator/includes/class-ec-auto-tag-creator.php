@@ -62,7 +62,7 @@ class Ec_Auto_Tag_Creator {
 		if ( defined( 'EC_AUTO_TAG_CREATOR_VERSION' ) ) {
 			$this->version = EC_AUTO_TAG_CREATOR_VERSION;
 		} else {
-			$this->version = '1.0.3';
+			$this->version = '1.1.0';
 		}
 		$this->plugin_name = 'ec-auto-tag-creator';
 
@@ -143,8 +143,22 @@ class Ec_Auto_Tag_Creator {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_setting_menu_page' );
 		$this->loader->add_action( 'wp_ajax_tag_save_settings', $plugin_admin, 'tag_save_settings_callback' );
-		$this->loader->add_action( 'publish_post', $plugin_admin, 'create_tags' );
-		$this->loader->add_action( 'publish_product', $plugin_admin, 'create_tags' );
+		$this->loader->add_action( 'wp_ajax_ec_auto_tag_bulk_create', $plugin_admin, 'bulk_create_tags_callback' );
+
+		// WordPress 5.6+ fires wp_after_insert_post after terms are saved, which the block editor needs.
+		if ( function_exists( 'wp_after_insert_post' ) ) {
+			$this->loader->add_action( 'wp_after_insert_post', $plugin_admin, 'after_insert_post', 10, 2 );
+		} else {
+			$this->loader->add_action( 'publish_post', $plugin_admin, 'create_tags' );
+			$this->loader->add_action( 'publish_product', $plugin_admin, 'create_tags' );
+		}
+
+		// WooCommerce API, imports and other plugins save product terms after the post itself.
+		$this->loader->add_action( 'woocommerce_new_product', $plugin_admin, 'after_save_product' );
+		$this->loader->add_action( 'woocommerce_update_product', $plugin_admin, 'after_save_product' );
+
+		$plugin_file = plugin_basename( plugin_dir_path( dirname( __FILE__ ) ) . 'ec-auto-tag-creator.php' );
+		$this->loader->add_filter( 'plugin_action_links_' . $plugin_file, $plugin_admin, 'add_settings_link' );
 
 	}
 

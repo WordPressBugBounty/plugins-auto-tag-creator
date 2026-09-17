@@ -18,25 +18,16 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Ec_Auto_Tag_Creator_Activator {
 
 	/**
-	 * Short Description. (use period)
-	 *
-	 * Long Description.
+	 * Save default settings on first activation.
 	 *
 	 * @since    1.0.3
 	 */
 	public static function activate() {
 		
-		$save_setting = array();
-		
-		$save_setting['enable_post_title']  =  '1';
-		$save_setting['enable_post_category']  =  '1';
-		$save_setting['enable_product_title']  =  '0';
-		$save_setting['enable_product_category']  =  '0';
-		$save_setting['overwrite_tag']  =  '0';
-		$save_setting['minimum_word']  =  '3';
-		$save_setting['ignore_words']  =  '';
-		
-		update_option( 'ec_auto_tag_creator_setting', $save_setting );
+		// Keep existing settings when the plugin is reactivated.
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-ec-auto-tag-creator-admin.php';
+
+		add_option( 'ec_auto_tag_creator_setting', Ec_Auto_Tag_Creator_Admin::get_default_settings() );
 		
 	}
 

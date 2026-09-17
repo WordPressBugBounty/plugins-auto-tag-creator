@@ -1,9 +1,15 @@
-<h1><?php
+<?php
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
- echo esc_html__('Tag Creation Setting','ec-auto-tag-creator'); ?></h1>
-		<div class="wrap"><br/>
+?>
+<div class="wrap ec-atc-wrap">
+	<h1><?php echo esc_html__('Tag Creation Setting','ec-auto-tag-creator'); ?></h1>
+
+	<div class="ec-atc-layout">
+	<div class="ec-atc-main">
+
+	<div class="ec-atc-card">
 		<form action="" id="tag_setting_from" method="post">
 			<table class="form-table">
 			<tbody>
@@ -67,16 +73,95 @@ if ( ! defined( 'ABSPATH' ) ) {
 					</td>
 				</tr>
 				<tr>
+					<th>
+					<label for="use_stop_words"><?php echo esc_html__('Ignore common words','ec-auto-tag-creator'); ?></label>
+					</th>
 					<td>
+						<input <?php checked( $settings['use_stop_words'], '1' ); ?> type="checkbox" value="1" name="use_stop_words" id="use_stop_words"/>
+						<label for="use_stop_words"><?php echo esc_html__('Skip common English words like "the", "and", "for", "with"','ec-auto-tag-creator'); ?></label>
+						<p><?php echo esc_html__('Works together with your own ignore words list above.','ec-auto-tag-creator'); ?></p>
 					</td>
+				</tr>
+				<tr>
+					<th>
+					<label for="tag_case"><?php echo esc_html__('Tag letter case','ec-auto-tag-creator'); ?></label>
+					</th>
 					<td>
-						<input type="submit" id="submit_settings" class="button-primary button button-hero" onclick="return auto_tag_save_settings();" value="<?php echo esc_html__('Save Settings','ec-auto-tag-creator');?>">
-						<img class="loader_image" src="<?php echo esc_url( plugin_dir_url( dirname( __FILE__ ) ) ); ?>images/loader.gif">
-						<h3><strong><?php echo esc_html__('If you want to have same  functionality for other post type as well, please','ec-auto-tag-creator'); ?> <a href="http://ecreateinfotech.com/contact-us/" target="_blank"><?php echo esc_html__('contact us','ec-auto-tag-creator'); ?></a> <?php echo esc_html__('for any type of custom work.','ec-auto-tag-creator'); ?></strong></h3>
+						<select name="tag_case" id="tag_case">
+							<option value="original" <?php selected( $settings['tag_case'], 'original' ); ?>><?php echo esc_html__('As written in title or category','ec-auto-tag-creator'); ?></option>
+							<option value="lower" <?php selected( $settings['tag_case'], 'lower' ); ?>><?php echo esc_html__('lowercase (running shoes)','ec-auto-tag-creator'); ?></option>
+							<option value="title" <?php selected( $settings['tag_case'], 'title' ); ?>><?php echo esc_html__('Title Case (Running Shoes)','ec-auto-tag-creator'); ?></option>
+						</select>
+						<p><?php echo esc_html__('If a tag with the same name already exists, WordPress uses the existing tag as it is.','ec-auto-tag-creator'); ?></p>
+					</td>
+				</tr>
+				<tr>
+					<th>
+					<label for="max_tags"><?php echo esc_html__('Maximum tags per item','ec-auto-tag-creator'); ?></label>
+					</th>
+					<td>
+						<input type="number" min="0" value="<?php echo esc_attr( $settings['max_tags'] ); ?>" name="max_tags" id="max_tags"/>
+						<p><?php echo esc_html__('Maximum number of new tags created for each post or product. Existing tags are not removed. Zero or blank means no limit.','ec-auto-tag-creator'); ?></p>
 					</td>
 				</tr>
 			</tbody>
 			</table>
+			<div class="ec-atc-submit">
+				<input type="submit" id="submit_settings" class="button button-primary" onclick="return auto_tag_save_settings();" value="<?php echo esc_attr__('Save Settings','ec-auto-tag-creator');?>">
+				<img class="loader_image" src="<?php echo esc_url( plugin_dir_url( dirname( __FILE__ ) ) ); ?>images/loader.gif" alt="">
+			</div>
 		</form>
-		<br/>
+	</div>
+
+	<div class="ec-atc-card">
+		<h2 class="ec-atc-card-title"><span class="dashicons dashicons-update"></span><?php echo esc_html__('Tag Existing Content','ec-auto-tag-creator'); ?></h2>
+		<p class="ec-atc-card-desc"><?php echo esc_html__('Generate tags for items that are already published, using the saved settings above. Save your settings first.','ec-auto-tag-creator'); ?></p>
+		<?php foreach ( $bulk_post_types as $bulk_post_type => $bulk_label ) : ?>
+		<div class="ec-atc-bulk-row">
+			<div class="ec-atc-bulk-label">
+				<strong><?php echo esc_html( $bulk_label ); ?></strong>
+				<div class="ec-auto-tag-progress" hidden><span></span></div>
+				<span class="ec-auto-tag-bulk-status"></span>
+			</div>
+			<button type="button" class="button button-secondary ec-auto-tag-bulk" data-post-type="<?php echo esc_attr( $bulk_post_type ); ?>" data-title="<?php /* translators: %s: post type label, e.g. Posts. */ echo esc_attr( sprintf( __( 'Generate tags for all %s?', 'ec-auto-tag-creator' ), $bulk_label ) ); ?>">
+				<?php
+				/* translators: %s: post type label, e.g. Posts. */
+				echo esc_html( sprintf( __( 'Generate tags for all %s', 'ec-auto-tag-creator' ), $bulk_label ) );
+				?>
+			</button>
 		</div>
+		<?php endforeach; ?>
+	</div>
+
+	</div>
+
+	<div class="ec-atc-sidebar">
+	<div class="ec-atc-promo">
+		<span class="dashicons dashicons-admin-tools ec-atc-promo-icon"></span>
+		<div class="ec-atc-promo-text">
+			<h3><?php echo esc_html__('Need auto tagging for other post types?','ec-auto-tag-creator'); ?></h3>
+			<p><?php echo esc_html__('We can add the same functionality for your custom post types, or build any other custom WordPress work you need.','ec-auto-tag-creator'); ?></p>
+		</div>
+		<a class="button ec-atc-promo-button" href="http://ecreateinfotech.com/contact/" target="_blank" rel="noopener noreferrer"><?php echo esc_html__('Contact Us','ec-auto-tag-creator'); ?></a>
+	</div>
+	</div>
+	</div>
+
+	<div class="ec-atc-modal" id="ec-atc-bulk-modal" hidden>
+		<div class="ec-atc-modal-backdrop" data-close></div>
+		<div class="ec-atc-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="ec-atc-modal-title" aria-describedby="ec-atc-modal-desc">
+			<button type="button" class="ec-atc-modal-x" data-close aria-label="<?php echo esc_attr__('Close','ec-auto-tag-creator'); ?>"><span class="dashicons dashicons-no-alt"></span></button>
+			<span class="dashicons dashicons-tag ec-atc-modal-icon"></span>
+			<h2 id="ec-atc-modal-title"></h2>
+			<p id="ec-atc-modal-desc"><?php echo esc_html__('Tags will be added to every published item of this type using your saved settings. Large sites may take a few minutes, please keep this page open until it finishes.','ec-auto-tag-creator'); ?></p>
+			<div class="ec-atc-modal-warning" <?php echo $settings['overwrite_tag'] == '1' ? '' : 'hidden'; ?>>
+				<span class="dashicons dashicons-warning"></span>
+				<span><?php echo esc_html__('"Overwrite Previous Tag" is enabled, so existing tags on these items will be replaced.','ec-auto-tag-creator'); ?></span>
+			</div>
+			<div class="ec-atc-modal-actions">
+				<button type="button" class="button" data-close><?php echo esc_html__('Cancel','ec-auto-tag-creator'); ?></button>
+				<button type="button" class="button button-primary" id="ec-atc-modal-confirm"><?php echo esc_html__('Generate Tags','ec-auto-tag-creator'); ?></button>
+			</div>
+		</div>
+	</div>
+</div>

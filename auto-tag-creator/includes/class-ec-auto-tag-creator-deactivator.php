@@ -18,16 +18,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Ec_Auto_Tag_Creator_Deactivator {
 
 	/**
-	 * Short Description. (use period)
-	 *
-	 * Long Description.
+	 * Nothing to clean up on deactivation.
 	 *
 	 * @since    1.0.3
 	 */
 	public static function deactivate() {
-		
-		delete_option( 'ec_auto_tag_creator_setting' );
-		
+		// Settings are kept on deactivation and removed in uninstall.php.
 	}
 
 }
