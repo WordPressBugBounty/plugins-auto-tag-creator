@@ -64,3 +64,10 @@ body.ec-atc-modal-open{overflow:hidden;}
 .ec-atc-bulk-label.is-done .ec-auto-tag-bulk-status::before{content:"\f147";font-family:dashicons;font-size:18px;vertical-align:-4px;margin-right:2px;}
 .ec-atc-bulk-label.is-error .ec-auto-tag-progress span{background:#d63638;}
 .ec-atc-bulk-label.is-error .ec-auto-tag-bulk-status{color:#d63638;font-weight:600;}
+
+.ec-atc-more{margin-top:20px;padding:16px 20px;}
+.ec-atc-more h3{margin:0 0 8px;font-size:14px;}
+.ec-atc-more ul{margin:0 0 8px;}
+.ec-atc-more li{margin:0 0 8px;}
+.ec-atc-more span{color:#646970;font-size:12px;}
+.ec-atc-more p{margin:0;}

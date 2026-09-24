@@ -11,11 +11,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @wordpress-plugin
  * Plugin Name:       Auto Tag Creator
- * Plugin URI:        http://ecreateinfotech.com/services/cms-development/wordpress-development/
+ * Plugin URI:        https://www.ecreateinfotech.com/services/web-development
  * Description:       Automatically creates tags from post and product titles and categories, on publish or update.
- * Version: 1.1.0
+ * Version: 1.1.1
  * Author:            Ecreate Infotech
  * Author URI:        http://ecreateinfotech.com/
+ * Requires at least: 4.7
+ * Requires PHP:      5.6
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       ec-auto-tag-creator
@@ -30,7 +32,7 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Currently plugin version. 
  */
-define( 'EC_AUTO_TAG_CREATOR_VERSION', '1.1.0' );
+define( 'EC_AUTO_TAG_CREATOR_VERSION', '1.1.1' );
 
 /**
  * The code that runs during plugin activation.
@@ -57,6 +59,7 @@ register_deactivation_hook( __FILE__, 'ectc_deactivate_ec_auto_tag_creator' );
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
+require plugin_dir_path( __FILE__ ) . 'includes/class-ec-auto-tag-creator-more-plugins.php';
 require plugin_dir_path( __FILE__ ) . 'includes/class-ec-auto-tag-creator.php';
 
 /**

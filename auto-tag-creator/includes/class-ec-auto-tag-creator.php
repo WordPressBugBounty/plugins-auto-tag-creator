@@ -62,13 +62,12 @@ class Ec_Auto_Tag_Creator {
 		if ( defined( 'EC_AUTO_TAG_CREATOR_VERSION' ) ) {
 			$this->version = EC_AUTO_TAG_CREATOR_VERSION;
 		} else {
-			$this->version = '1.1.0';
+			$this->version = '1.1.1';
 		}
 		$this->plugin_name = 'ec-auto-tag-creator';
 
 		$this->load_dependencies();
-		$this->set_locale();
-		$this->define_admin_hooks();		
+		$this->define_admin_hooks();
 
 	}
 
@@ -78,7 +77,6 @@ class Ec_Auto_Tag_Creator {
 	 * Include the following files that make up the plugin:
 	 *
 	 * - Ec_Auto_Tag_Creator_Loader. Orchestrates the hooks of the plugin.
-	 * - Ec_Auto_Tag_Creator_i18n. Defines internationalization functionality.
 	 * - Ec_Auto_Tag_Creator_Admin. Defines all hooks for the admin area.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
@@ -96,35 +94,12 @@ class Ec_Auto_Tag_Creator {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-ec-auto-tag-creator-loader.php';
 
 		/**
-		 * The class responsible for defining internationalization functionality
-		 * of the plugin.
-		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-ec-auto-tag-creator-i18n.php';
-
-		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-ec-auto-tag-creator-admin.php';
 
 		
 		$this->loader = new Ec_Auto_Tag_Creator_Loader();
-
-	}
-
-	/**
-	 * Define the locale for this plugin for internationalization.
-	 *
-	 * Uses the Ec_Auto_Tag_Creator_i18n class in order to set the domain and to register the hook
-	 * with WordPress.
-	 *
-	 * @since    1.0.3
-	 * @access   private
-	 */
-	private function set_locale() {
-
-		$plugin_i18n = new Ec_Auto_Tag_Creator_i18n();
-
-		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
 	}
 

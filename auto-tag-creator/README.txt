@@ -1,9 +1,9 @@
 === Auto Tag Creator ===
 Contributors: ecreateinfotech, gb071
 Tags: tags, auto tagging, woocommerce, seo, keywords
-Requires at least: 4.6
+Requires at least: 4.7
 Tested up to: 7.1
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -38,7 +38,7 @@ Say you publish a post titled "Easy Tomato Soup Recipe" in the category "Healthy
 
 = Need it for other post types? =
 
-Auto Tag Creator works with posts and WooCommerce products. If you need the same feature for a custom post type, or any other custom WordPress work, please [contact us](http://ecreateinfotech.com/contact/).
+Auto Tag Creator works with posts and WooCommerce products. If you need the same feature for a custom post type, or any other custom WordPress work, please [contact us](https://www.ecreateinfotech.com/contact/?utm_source=wp-plugin&utm_medium=readme&utm_campaign=auto-tag-creator).
 
 == Installation ==
 
@@ -75,7 +75,7 @@ Yes. Turn on product tagging in the settings and the plugin will create product 
 
 = Does it work with custom post types? =
 
-Not at the moment. The plugin supports posts and WooCommerce products. If you need it for a custom post type, please [contact us](http://ecreateinfotech.com/contact/).
+Not at the moment. The plugin supports posts and WooCommerce products. If you need it for a custom post type, please [contact us](https://www.ecreateinfotech.com/contact/?utm_source=wp-plugin&utm_medium=readme&utm_campaign=auto-tag-creator).
 
 = Why do some tags not use the letter case I selected? =
 
@@ -94,6 +94,12 @@ No. Settings are kept when the plugin is deactivated. They are removed only when
 5. WooCommerce products list with tags created from product names and categories.
 
 == Changelog ==
+
+= 1.1.1 =
+* Added: "More free plugins by Ecreate" panel on the settings page, kept up to date from WordPress.org.
+* Changed: Plugin URI updated to the new services page.
+* Changed: Minimum WordPress version is now 4.7, which the plugin already required.
+* Removed: Unnecessary translation loading. WordPress loads plugin translations automatically.
 
 = 1.1.0 =
 * Added: Built-in list of common English words to skip.

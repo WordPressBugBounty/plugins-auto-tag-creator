@@ -142,7 +142,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<h3><?php echo esc_html__('Need auto tagging for other post types?','ec-auto-tag-creator'); ?></h3>
 			<p><?php echo esc_html__('We can add the same functionality for your custom post types, or build any other custom WordPress work you need.','ec-auto-tag-creator'); ?></p>
 		</div>
-		<a class="button ec-atc-promo-button" href="http://ecreateinfotech.com/contact/" target="_blank" rel="noopener noreferrer"><?php echo esc_html__('Contact Us','ec-auto-tag-creator'); ?></a>
+		<a class="button ec-atc-promo-button" href="https://www.ecreateinfotech.com/contact/?utm_source=wp-plugin&amp;utm_medium=settings&amp;utm_campaign=auto-tag-creator" target="_blank" rel="noopener noreferrer"><?php echo esc_html__('Contact Us','ec-auto-tag-creator'); ?></a>
+	</div>
+	<?php $ec_atc_more = Ec_Auto_Tag_Creator_More_Plugins::get( 'auto-tag-creator' ); ?>
+	<div class="ec-atc-card ec-atc-more">
+		<h3><?php echo esc_html__( 'More free plugins by Ecreate', 'ec-auto-tag-creator' ); ?></h3>
+		<?php if ( $ec_atc_more ) : ?>
+			<ul>
+				<?php foreach ( $ec_atc_more as $ec_atc_plugin ) : ?>
+					<li>
+						<a href="<?php echo esc_url( Ec_Auto_Tag_Creator_More_Plugins::plugin_url( $ec_atc_plugin['slug'] ) ); ?>"><?php echo esc_html( $ec_atc_plugin['name'] ); ?></a>
+						<?php if ( '' !== $ec_atc_plugin['description'] ) : ?>
+							<br/><span><?php echo esc_html( $ec_atc_plugin['description'] ); ?></span>
+						<?php endif; ?>
+					</li>
+				<?php endforeach; ?>
+			</ul>
+		<?php endif; ?>
+		<p><a href="<?php echo esc_url( Ec_Auto_Tag_Creator_More_Plugins::all_plugins_url() ); ?>"><?php echo esc_html__( 'See all our plugins', 'ec-auto-tag-creator' ); ?></a></p>
 	</div>
 	</div>
 	</div>
