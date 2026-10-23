@@ -1,6 +1,6 @@
-=== Auto Tag Creator ===
+=== Auto Tag Creator - Automatic Tags for Posts and WooCommerce Products ===
 Contributors: ecreateinfotech, gb071
-Tags: tags, auto tagging, woocommerce, seo, keywords
+Tags: auto tagging, automatic tags, tag generator, post tags, woocommerce tags
 Requires at least: 4.7
 Tested up to: 7.1
 Stable tag: 1.1.1
@@ -8,11 +8,13 @@ Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Automatically creates tags from post and product titles and categories when you publish or update.
+Automatically add tags to posts and WooCommerce products from their titles and categories, and bulk tag what you already published.
 
 == Description ==
 
-Auto Tag Creator adds tags to your posts and WooCommerce products for you. When you publish or update an item, the plugin takes the words from its title and category names and saves them as tags. You decide which words to skip, how long a word must be, and how many tags each item gets.
+Auto Tag Creator is an automatic tagging plugin for WordPress posts and WooCommerce products. It works as a tag generator: when you publish or update an item, it takes the words from its title and category names and saves them as post tags or product tags. You decide which words to skip, how long a word must be, and how many tags each item gets.
+
+If you have ever published a post and forgotten the tags, or inherited a site with thousands of untagged products, this does the tagging for you and can tag everything you have already published in bulk.
 
 It is a good fit for blogs, news sites, community sites and online stores where content is added often and tags are easy to forget.
 
@@ -52,6 +54,18 @@ That's it. New and updated posts and products will now be tagged automatically. 
 To install manually, upload the plugin folder to the `/wp-content/plugins/` directory and activate the plugin from the Plugins page.
 
 == Frequently Asked Questions ==
+
+= How do I add tags automatically in WordPress? =
+
+Install the plugin and publish or update a post. Tags are created from the title and the categories, with no further work. Everything it does is controlled under Tag Setting in the admin menu.
+
+= Can I bulk tag posts and products I have already published? =
+
+Yes. Tag Setting has a bulk tagging tool with a progress bar that tags existing posts and WooCommerce products in batches, so a large catalogue does not time out.
+
+= Does it create WooCommerce product tags as well as post tags? =
+
+Yes. Product tagging can be switched on or off separately from post tagging, and it covers products added through the WooCommerce REST API, CSV imports and other plugins.
 
 = Does the plugin turn every word into a tag? =
 
