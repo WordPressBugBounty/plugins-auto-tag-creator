@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * Plugin Name:       Auto Tag Creator
  * Plugin URI:        https://www.ecreateinfotech.com/services/web-development
  * Description:       Automatically creates tags from post and product titles and categories, on publish or update.
- * Version: 1.1.1
+ * Version: 1.1.2
  * Author:            Ecreate Infotech
  * Author URI:        http://ecreateinfotech.com/
  * Requires at least: 4.7

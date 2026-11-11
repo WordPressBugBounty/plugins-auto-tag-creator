@@ -3,7 +3,7 @@ Contributors: ecreateinfotech, gb071
 Tags: auto tagging, automatic tags, tag generator, post tags, woocommerce tags
 Requires at least: 4.7
 Tested up to: 7.1
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -77,7 +77,7 @@ Only if you turn on "Overwrite Previous Tag". When this option is off, which is 
 
 = When are tags added? =
 
-Tags are added when a post or product is published and each time a published item is updated. Drafts and autosaves are not tagged. Scheduled posts are tagged when they go live.
+Tags are added once, when a post or product is first published. Updating it again afterwards will not re-add tags you removed. Drafts and autosaves are not tagged. Scheduled posts are tagged when they go live. To tag items again on purpose, use "Tag Existing Content".
 
 = Can I add tags to posts and products I have already published? =
 
@@ -108,6 +108,9 @@ No. Settings are kept when the plugin is deactivated. They are removed only when
 5. WooCommerce products list with tags created from product names and categories.
 
 == Changelog ==
+
+= 1.1.2 =
+* Fixed: Tags removed manually (via Quick Edit or the post editor) were being re-added the next time the post was saved. Auto-tagging now runs only once per post on its first publish; the "Tag Existing Content" bulk tool can still be used to re-run tagging on purpose.
 
 = 1.1.1 =
 * Added: "More free plugins by Ecreate" panel on the settings page, kept up to date from WordPress.org.
@@ -149,6 +152,9 @@ No. Settings are kept when the plugin is deactivated. They are removed only when
 * First version.
 
 == Upgrade Notice ==
+
+= 1.1.2 =
+Fixes tags you removed manually being re-added on the next save.
 
 = 1.1.0 =
 Adds bulk tagging, common word filtering, tag letter case and tag limit settings, and fixes tagging in the block editor and for WooCommerce products.

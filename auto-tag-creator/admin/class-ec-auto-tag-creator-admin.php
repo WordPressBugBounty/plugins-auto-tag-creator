@@ -25,6 +25,14 @@ class Ec_Auto_Tag_Creator_Admin {
 	const BULK_BATCH_SIZE = 20;
 
 	/**
+	 * Post meta key used to mark a post as already auto-tagged, so
+	 * later saves don't regenerate (and re-add) tags the user removed.
+	 *
+	 * @since    1.1.2
+	 */
+	const PROCESSED_META_KEY = '_ec_auto_tag_creator_processed';
+
+	/**
 	 * The ID of this plugin.
 	 *
 	 * @since    1.0.3
@@ -364,7 +372,7 @@ class Ec_Auto_Tag_Creator_Admin {
 
 		wp_defer_term_counting( true );
 		foreach ( $post_ids as $post_id ) {
-			$this->create_tags( $post_id );
+			$this->create_tags( $post_id, true );
 		}
 		wp_defer_term_counting( false );
 
@@ -381,11 +389,21 @@ class Ec_Auto_Tag_Creator_Admin {
 	}
 
 	/**
-	 * Create tags when publishing or updating post.
+	 * Create tags when publishing a post.
+	 *
+	 * Runs only once per post (on its first publish) unless $force is
+	 * true, so manually removed tags don't get regenerated and re-added
+	 * on every later save/update.
 	 *
 	 * @since    1.0.3
+	 * @param    int     $post_id    The post to tag.
+	 * @param    bool    $force      Regenerate even if this post was already processed.
 	 */
-	public function create_tags( $post_id ) {
+	public function create_tags( $post_id, $force = false ) {
+
+		if ( ! $force && get_post_meta( $post_id, self::PROCESSED_META_KEY, true ) ) {
+			return;
+		}
 
 		$post_type = get_post_type($post_id);
 
@@ -448,6 +466,8 @@ class Ec_Auto_Tag_Creator_Admin {
 		$new_tags = $this->format_tags( array_merge( $title_tags, $cat_tags ), $settings['tag_case'], (int) $settings['max_tags'] );
 
 		$this->set_tag( $post_id, $new_tags, array(), $term_taxonomy_name , $settings['overwrite_tag'] );
+
+		update_post_meta( $post_id, self::PROCESSED_META_KEY, '1' );
 
 	}
 
